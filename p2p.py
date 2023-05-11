@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 from tensorflow import keras
 import tensorflow as tf
 
-clr_path = "/kaggle/input/landscape-image-colorization/landscape Images/color"
-gry_path = "/kaggle/input/landscape-image-colorization/landscape Images/gray"
+clr_path = "colour image path here"                 # change the path here
+gry_path = "grayscale image path here"              # change the path here
 
 import os
 
@@ -234,7 +234,7 @@ def dis_loss (dis_gen_output, dis_tar_output) :
     
     total_dis_loss = gen_loss + tar_loss
     return total_dis_loss
-img  = cv2.imread('../input/landscape-image-colorization/landscape Images/color/12.jpg')   #change here
+img  = cv2.imread('any color image path here')   # change the path here
 img  = cv2.resize(cv2.cvtColor(img, cv2.COLOR_BGR2RGB), (128,128))
 a128 = img_to_array(Image.fromarray(img))
 
@@ -469,8 +469,8 @@ mae_scores = []
 accuracy_scores = []
 
 for i in range(0, 10):
-    generated_image_path = f'/kaggle/working/gen_{i}.png'
-    target_image_path = f'/kaggle/working/tar_{i}.png'
+    generated_image_path = f'/kaggle/working/gen_{i}.png'     # change the path here
+    target_image_path = f'/kaggle/working/tar_{i}.png'        # change the path here
     
     ssim_score, psnr_score, mae_score, accuracy_score = calculate_metrics(target_image_path, generated_image_path)
     
@@ -493,8 +493,7 @@ from tensorflow.keras.models import load_model
 model=load_model('gen_model.h5')
 
 
-input_paths = ['/kaggle/working/bw_23.png', '/kaggle/input/landscape-image-colorization/landscape Images/gray/5016.jpg','/kaggle/input/landscape-image-colorization/landscape Images/gray/5008.jpg',
-               '/kaggle/working/bw_43.png','/kaggle/working/bw_35.png' ,'/kaggle/working/bw_28.png','/kaggle/working/bw_26.png','/kaggle/working/bw_4.png']
+input_paths = ['test grayscale image path', 'test grayscale image path'] #can add multiple paths
 
 # Loop through each input image and generate the output image
 for input_path in input_paths:
@@ -515,7 +514,7 @@ for input_path in input_paths:
     output = tf.image.encode_jpeg(output)
 
     # Save the output image
-    output_path = '/kaggle/working/output_image' + input_path.split('/')[-1]
+    output_path = '/kaggle/working/output_image' + input_path.split('/')[-1]   # change the path here
     with open(output_path, 'wb') as f:
         f.write(output.numpy())
 
